@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.xuzhouhhy.goandroid.R;
 
 /**
+ * 自定义控件初试
  * Created by xuzhouhhy on 2017/8/1.
  */
 
