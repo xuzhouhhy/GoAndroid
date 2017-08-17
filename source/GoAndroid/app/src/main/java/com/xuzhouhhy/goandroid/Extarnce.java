@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import com.xuzhouhhy.goandroid.App.App;
 import com.xuzhouhhy.goandroid.customview.CustomViewActivity;
+import com.xuzhouhhy.goandroid.opengl.AirHockeyActivity;
 import com.xuzhouhhy.goandroid.opengl.OpenGlActivity;
 
 import java.util.ArrayList;
@@ -42,9 +43,17 @@ public enum Extarnce {
             case R.string.title_opengl:
                 enterOpenglView(context);
                 break;
+            case R.string.title_airhockey:
+                enterAirhockeyglView(context);
+                break;
             default:
                 break;
         }
+    }
+
+    private void enterAirhockeyglView(Context context) {
+        Intent intent = new Intent(context, AirHockeyActivity.class);
+        context.startActivity(intent);
     }
 
     private void enterOpenglView(Context context) {
