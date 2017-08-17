@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import com.xuzhouhhy.goandroid.App.App;
 import com.xuzhouhhy.goandroid.customview.CustomViewActivity;
+import com.xuzhouhhy.goandroid.opengl.OpenGlActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,8 @@ import java.util.List;
 public enum Extarnce {
 
     CUSTOM_VIEW(R.string.title_customview),
-    IMAGEVIEW_SHOW(R.string.title_imageview);
+    IMAGEVIEW_SHOW(R.string.title_imageview),
+    OPENGL(R.string.title_opengl);
 
     private int mValue;
 
@@ -37,9 +39,17 @@ public enum Extarnce {
             case R.string.title_imageview:
                 enterImageView(context);
                 break;
+            case R.string.title_opengl:
+                enterOpenglView(context);
+                break;
             default:
                 break;
         }
+    }
+
+    private void enterOpenglView(Context context) {
+        Intent intent = new Intent(context, OpenGlActivity.class);
+        context.startActivity(intent);
     }
 
     private void enterImageView(Context context) {

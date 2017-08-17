@@ -3,4 +3,5 @@
     <string name="title_customview">自定义控件</string>
     <string name="title_imageview">图片展示</string>
     <string name="title_next">下一个</string>
+    <string name="title_opengl">open gl</string>
 </resources>
