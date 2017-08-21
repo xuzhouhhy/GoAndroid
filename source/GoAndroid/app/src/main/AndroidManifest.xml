@@ -32,6 +32,11 @@
             android:configChanges="orientation|screenSize"
             android:screenOrientation="user">
         </activity>
+        <activity
+            android:name=".camera.CameraActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="user">
+        </activity>
     </application>
 
 </manifest>
