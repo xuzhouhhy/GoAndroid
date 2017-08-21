@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".customview.CustomViewActivity"
+            android:name=".customview.ui.CustomViewActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="user">
         </activity>

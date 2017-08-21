@@ -1,4 +1,4 @@
-package com.xuzhouhhy.goandroid.customview;
+package com.xuzhouhhy.goandroid.customview.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

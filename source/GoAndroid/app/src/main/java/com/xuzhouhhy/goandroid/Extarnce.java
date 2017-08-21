@@ -4,7 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.xuzhouhhy.goandroid.app.App;
-import com.xuzhouhhy.goandroid.customview.CustomViewActivity;
+import com.xuzhouhhy.goandroid.camera.CameraActivity;
+import com.xuzhouhhy.goandroid.customview.ui.CustomViewActivity;
 import com.xuzhouhhy.goandroid.opengl.AirHockeyActivity;
 import com.xuzhouhhy.goandroid.opengl.OpenGlActivity;
 
@@ -20,7 +21,8 @@ public enum Extarnce {
 
     CUSTOM_VIEW(R.string.title_customview),
     IMAGEVIEW_SHOW(R.string.title_imageview),
-    OPENGL(R.string.title_opengl);
+    OPENGL(R.string.title_opengl),
+    CAMERA(R.string.title_custom_camera);
 
     private int mValue;
 
@@ -46,6 +48,9 @@ public enum Extarnce {
             case R.string.title_airhockey:
                 enterAirhockeyglView(context);
                 break;
+            case R.string.title_custom_camera:
+                enterCustomCamera(context);
+                break;
             default:
                 break;
         }
@@ -68,6 +73,11 @@ public enum Extarnce {
 
     private void enterCustomView(Context context) {
         Intent intent = new Intent(context, CustomViewActivity.class);
+        context.startActivity(intent);
+    }
+
+    private void enterCustomCamera(Context context) {
+        Intent intent = new Intent(context, CameraActivity.class);
         context.startActivity(intent);
     }
 
