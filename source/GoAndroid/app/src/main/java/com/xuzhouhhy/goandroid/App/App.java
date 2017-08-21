@@ -1,4 +1,4 @@
-package com.xuzhouhhy.goandroid.App;
+package com.xuzhouhhy.goandroid.app;
 
 import android.app.Application;
 

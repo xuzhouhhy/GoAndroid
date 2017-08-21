@@ -3,7 +3,7 @@ package com.xuzhouhhy.goandroid;
 import android.content.Context;
 import android.content.Intent;
 
-import com.xuzhouhhy.goandroid.App.App;
+import com.xuzhouhhy.goandroid.app.App;
 import com.xuzhouhhy.goandroid.customview.CustomViewActivity;
 import com.xuzhouhhy.goandroid.opengl.AirHockeyActivity;
 import com.xuzhouhhy.goandroid.opengl.OpenGlActivity;
