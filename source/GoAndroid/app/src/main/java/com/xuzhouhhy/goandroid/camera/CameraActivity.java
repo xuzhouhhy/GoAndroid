@@ -75,7 +75,6 @@ public class CameraActivity extends Activity implements View.OnClickListener {
     }
 
     private void onOk() {
-        onTakePicture();
         setResult(RESULT_OK);
         finish();
     }

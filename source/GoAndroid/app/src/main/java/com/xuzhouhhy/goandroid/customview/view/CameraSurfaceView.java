@@ -136,7 +136,7 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
     public void onAutoFocus(boolean success, Camera camera) {
         if (success) {
             mCamera.takePicture(null, null, this);
-            ((CameraActivity)mActivity).onTokenPicture();
+            ((CameraActivity) mActivity).onTokenPicture();
         }
     }
 
@@ -189,6 +189,10 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
             mCamera.startPreview();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        File tempFile = new File(pn);
+        if (tempFile.exists()) {
+            tempFile.delete();
         }
     }
 }
