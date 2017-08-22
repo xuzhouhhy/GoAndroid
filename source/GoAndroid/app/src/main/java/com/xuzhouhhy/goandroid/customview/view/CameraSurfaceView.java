@@ -178,6 +178,9 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
         mCamera.autoFocus(this);
     }
 
+    /**
+     * 拍照不满意
+     */
     public void onCancel() {
         try {
             mCamera.stopPreview();

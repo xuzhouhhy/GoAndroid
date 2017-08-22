@@ -6,4 +6,6 @@
     <string name="title_opengl">open gl</string>
     <string name="title_airhockey">air hickey</string>
     <string name="title_custom_camera">自定义相机</string>
+    <string name="title_direction">朝向感应</string>
+    <string name="title_sdcard">SD卡列表</string>
 </resources>

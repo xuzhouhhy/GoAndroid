@@ -6,8 +6,10 @@ import android.content.Intent;
 import com.xuzhouhhy.goandroid.app.App;
 import com.xuzhouhhy.goandroid.camera.CameraActivity;
 import com.xuzhouhhy.goandroid.customview.ui.CustomViewActivity;
+import com.xuzhouhhy.goandroid.direction.DirectionActivity;
 import com.xuzhouhhy.goandroid.opengl.AirHockeyActivity;
 import com.xuzhouhhy.goandroid.opengl.OpenGlActivity;
+import com.xuzhouhhy.goandroid.sdcard.SdcardActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +24,9 @@ public enum Extarnce {
     CUSTOM_VIEW(R.string.title_customview),
     IMAGEVIEW_SHOW(R.string.title_imageview),
     OPENGL(R.string.title_opengl),
-    CAMERA(R.string.title_custom_camera);
+    CAMERA(R.string.title_custom_camera),
+    DIRECTION(R.string.title_direction),
+    SDCARD(R.string.title_sdcard);
 
     private int mValue;
 
@@ -51,9 +55,25 @@ public enum Extarnce {
             case R.string.title_custom_camera:
                 enterCustomCamera(context);
                 break;
+            case R.string.title_direction:
+                enterDirection(context);
+                break;
+            case R.string.title_sdcard:
+                enterSdcard(context);
+                break;
             default:
                 break;
         }
+    }
+
+    private void enterSdcard(Context context) {
+        Intent intent = new Intent(context, SdcardActivity.class);
+        context.startActivity(intent);
+    }
+
+    private void enterDirection(Context context) {
+        Intent intent = new Intent(context, DirectionActivity.class);
+        context.startActivity(intent);
     }
 
     private void enterAirhockeyglView(Context context) {
