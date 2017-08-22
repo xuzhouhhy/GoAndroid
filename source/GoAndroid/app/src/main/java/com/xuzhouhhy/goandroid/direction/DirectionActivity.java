@@ -76,7 +76,8 @@ public class DirectionActivity extends Activity implements SensorEventListener {
         StringBuffer buff = new StringBuffer();
         for (float value : mValues) {
             value = (float) Math.toDegrees(value);
-            buff.append(value + "  ");
+            String s = new java.text.DecimalFormat("0").format(value);
+            buff.append(s + "  \r\n");
         }
         mTvDirection.setText(buff.toString());
     }
