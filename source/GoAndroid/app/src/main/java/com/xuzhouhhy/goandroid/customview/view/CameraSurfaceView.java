@@ -10,6 +10,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.Toast;
 
+import com.xuzhouhhy.goandroid.camera.CameraActivity;
 import com.xuzhouhhy.goandroid.util.UtilCamera;
 
 import java.io.File;
@@ -133,6 +134,7 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
     public void onAutoFocus(boolean success, Camera camera) {
         if (success) {
             mCamera.takePicture(null, null, this);
+            ((CameraActivity)mActivity).onTokenPicture();
         }
     }
 

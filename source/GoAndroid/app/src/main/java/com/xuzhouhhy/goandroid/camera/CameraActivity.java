@@ -23,6 +23,8 @@ public class CameraActivity extends Activity implements View.OnClickListener {
     private CameraSurfaceView mSurfaceView;
 
     private Button mBtnTakePicture;
+    private Button mBtnOk;
+    private Button mBtnCancel;
 
     private FrameLayout mFrameLayout;
 
@@ -36,6 +38,11 @@ public class CameraActivity extends Activity implements View.OnClickListener {
             mSurfaceView = new CameraSurfaceView(this);
             mBtnTakePicture = (Button) findViewById(R.id.btnTakePicture);
             mBtnTakePicture.setOnClickListener(this);
+            mBtnOk = (Button) findViewById(R.id.btnOk);
+            mBtnOk.setOnClickListener(this);
+            mBtnCancel = (Button) findViewById(R.id.btnCancel);
+            mBtnCancel.setOnClickListener(this);
+            onTakePicture();
             mFrameLayout = (FrameLayout) findViewById(R.id.cameraPreview);
             mFrameLayout.addView(mSurfaceView);
         }
@@ -47,6 +54,45 @@ public class CameraActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        mSurfaceView.onFocus();
+        switch (v.getId()) {
+            case R.id.btnTakePicture:
+                mSurfaceView.onFocus();
+                break;
+            case R.id.btnOk:
+                onOk();
+                break;
+            case R.id.btnCancel:
+                onCancel();
+                break;
+            default:
+                break;
+        }
     }
+
+    private void onCancel() {
+        onTakePicture();
+    }
+
+    private void onOk() {
+        onTakePicture();
+    }
+
+    /**
+     * 拍照时按钮状态
+     */
+    public void onTakePicture() {
+        mBtnTakePicture.setVisibility(View.VISIBLE);
+        mBtnOk.setVisibility(View.INVISIBLE);
+        mBtnCancel.setVisibility(View.INVISIBLE);
+    }
+
+    /**
+     * 拍照后按钮状态
+     */
+    public void onTokenPicture() {
+        mBtnTakePicture.setVisibility(View.INVISIBLE);
+        mBtnOk.setVisibility(View.VISIBLE);
+        mBtnCancel.setVisibility(View.VISIBLE);
+    }
+
 }
