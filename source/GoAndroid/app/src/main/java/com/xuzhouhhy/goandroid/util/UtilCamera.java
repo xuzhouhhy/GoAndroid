@@ -16,7 +16,7 @@ import static android.hardware.Camera.CameraInfo.CAMERA_FACING_FRONT;
 public class UtilCamera {
 
     /**
-     * 获取相机示例
+     * 获取相机示例,后置
      */
     public static Camera getCameraInstance() {
         Camera camera = null;
@@ -93,7 +93,7 @@ public class UtilCamera {
         matrix.postRotate(degree);
         try {
             returnBm = Bitmap.createBitmap(bm, 0, 0, bm.getWidth(),
-                    bm.getHeight(), matrix, true);
+                    bm.getHeight(), matrix, false);
         } catch (OutOfMemoryError e) {
             e.printStackTrace();
         }

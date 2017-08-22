@@ -11,10 +11,32 @@
 
     <Button
         android:id="@+id/btnTakePicture"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="12dp"
+        android:padding="2dp"
         android:text="拍照"/>
+
+    <Button
+        android:id="@+id/btnOk"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignBottom="@+id/btnTakePicture"
+        android:layout_alignStart="@+id/btnTakePicture"
+        android:layout_marginStart="72dp"
+        android:padding="2dp"
+        android:text="确定"/>
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignBottom="@+id/btnTakePicture"
+        android:layout_alignEnd="@+id/btnTakePicture"
+        android:layout_marginEnd="72dp"
+        android:padding="2dp"
+        android:text="取消"/>
 
 </RelativeLayout>

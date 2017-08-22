@@ -1,55 +1,77 @@
 package com.xuzhouhhy.goandroid.customview.view;
 
-import android.content.Context;
+import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.PixelFormat;
 import android.hardware.Camera;
+import android.os.Environment;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.widget.Toast;
 
+import com.xuzhouhhy.goandroid.util.UtilCamera;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
+import static com.xuzhouhhy.goandroid.util.UtilCamera.getCameraInstance;
 
 /**
  * 相机预览
  * Created by xuzhouhhy on 2017/8/21.
  */
 
-public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Callback {
+public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Callback,
+        android.hardware.Camera.PictureCallback, Camera.AutoFocusCallback {
 
     private SurfaceHolder mSurfaceHolder;
 
     private Camera mCamera;
 
-    public CameraSurfaceView(Context context, Camera camera) {
-        super(context);
-        mCamera = camera;
+    private Activity mActivity;
+
+    public CameraSurfaceView(Activity activity) {
+        super(activity.getBaseContext());
+        mActivity = activity;
+        mCamera = getCameraInstance();
         mSurfaceHolder = getHolder();
         mSurfaceHolder.addCallback(this);
-        mSurfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         try {
-            mCamera.setPreviewDisplay(holder);
-            setParameter();
-            mCamera.startPreview();
+            startPreview();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public void startPreview() throws IOException {
+        SurfaceHolder holder = getHolder();
+        if (mCamera == null) {
+            mCamera = getCameraInstance();
+        }
+        mCamera.setPreviewDisplay(holder);
+        setParameter();
+        UtilCamera.setCameraDisplayOrientation(mActivity, UtilCamera.getCameraId(), mCamera);
+        mCamera.startPreview();
+    }
+
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        //释放相机资源
-        mCamera.setPreviewCallback(null);
-        mCamera.stopPreview();
-        mCamera.release();
+        releaseCamera();
     }
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-        if(mSurfaceHolder.getSurface()==null){
+        if (mSurfaceHolder.getSurface() == null) {
             return;
         }
         try {
@@ -95,5 +117,60 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
             }
         }
         mCamera.setParameters(parameters);
+    }
+
+    public void releaseCamera() {
+        //释放相机资源
+        if (mCamera != null) {
+            mCamera.setPreviewCallback(null);
+            mCamera.stopPreview();
+            mCamera.release();
+            mCamera = null;
+        }
+    }
+
+    @Override
+    public void onAutoFocus(boolean success, Camera camera) {
+        if (success) {
+            mCamera.takePicture(null, null, this);
+        }
+    }
+
+
+    @Override
+    public void onPictureTaken(final byte[] data, android.hardware.Camera camera) {
+        File picture = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        if (picture == null) {
+            Toast.makeText(mActivity, "返回照片为空", Toast.LENGTH_LONG);
+            return;
+        }
+        SimpleDateFormat sf = new SimpleDateFormat("yyyyMMddHHmmss");
+        final String pn = picture.getPath() + File.separator + sf.format(new Date()) + ".jpg";
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                File file = new File(pn);
+                try {
+                    // 获取当前旋转角度, 并旋转图片
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+                    bitmap = UtilCamera.rotateBitmapByDegree(bitmap, 180);
+                    FileOutputStream fos = new FileOutputStream(file);
+                    fos.write(data);
+                    fos.close();
+                    bitmap.recycle();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+    /**
+     * 自动对焦
+     */
+    public void onFocus() {
+        mCamera.autoFocus(this);
     }
 }
