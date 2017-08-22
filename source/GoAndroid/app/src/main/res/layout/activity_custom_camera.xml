@@ -24,8 +24,8 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignBottom="@+id/btnTakePicture"
-        android:layout_alignStart="@+id/btnTakePicture"
-        android:layout_marginStart="72dp"
+        android:layout_alignLeft="@+id/btnTakePicture"
+        android:layout_marginLeft="72dp"
         android:padding="2dp"
         android:text="确定"/>
 
@@ -34,8 +34,8 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignBottom="@+id/btnTakePicture"
-        android:layout_alignEnd="@+id/btnTakePicture"
-        android:layout_marginEnd="72dp"
+        android:layout_alignRight="@+id/btnTakePicture"
+        android:layout_marginRight="72dp"
         android:padding="2dp"
         android:text="取消"/>
 

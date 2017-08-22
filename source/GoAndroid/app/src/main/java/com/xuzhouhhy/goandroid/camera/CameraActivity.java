@@ -71,10 +71,13 @@ public class CameraActivity extends Activity implements View.OnClickListener {
 
     private void onCancel() {
         onTakePicture();
+        mSurfaceView.onCancel();
     }
 
     private void onOk() {
         onTakePicture();
+        setResult(RESULT_OK);
+        finish();
     }
 
     /**

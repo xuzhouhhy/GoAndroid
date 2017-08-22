@@ -31,6 +31,8 @@ import static com.xuzhouhhy.goandroid.util.UtilCamera.getCameraInstance;
 public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Callback,
         android.hardware.Camera.PictureCallback, Camera.AutoFocusCallback {
 
+    static String pn;
+
     private SurfaceHolder mSurfaceHolder;
 
     private Camera mCamera;
@@ -147,7 +149,7 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
             return;
         }
         SimpleDateFormat sf = new SimpleDateFormat("yyyyMMddHHmmss");
-        final String pn = picture.getPath() + File.separator + sf.format(new Date()) + ".jpg";
+        pn = picture.getPath() + File.separator + sf.format(new Date()) + ".jpg";
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -174,5 +176,19 @@ public class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Call
      */
     public void onFocus() {
         mCamera.autoFocus(this);
+    }
+
+    public void onCancel() {
+        try {
+            mCamera.stopPreview();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            mCamera.setPreviewDisplay(mSurfaceHolder);
+            mCamera.startPreview();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
