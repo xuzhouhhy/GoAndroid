@@ -100,12 +100,12 @@ public class DirectionActivity extends Activity implements SensorEventListener {
         if (values[0] > 180.0 || values[0] < -180.0 || values[1] > 90.0 || values[1] < -90.0 || values[2] > 180.0 || values[2] < -180.0) {
             return "方向传感器数据数据超限";
         }
-        if (-20.0 < values[2] && values[2] < 20.0) {
-            return "摄像头朝下，无法判断角度";
-        }
-        if (-170.0 > values[2] || values[2] > 170.0) {
-            return "摄像头朝上，无法判断角度";
-        }
+//        if (-5.0 < values[2] && values[2] < 5.0) {
+//            return "摄像头朝下，无法判断角度";
+//        }
+//        if (-175.0 > values[2] || values[2] > 175.0) {
+//            return "摄像头朝上，无法判断角度";
+//        }
         if (values[2] < 0) {
             if (values[0] >= -90.0) {
                 return analyzeValue(values[0] + 90.0);
