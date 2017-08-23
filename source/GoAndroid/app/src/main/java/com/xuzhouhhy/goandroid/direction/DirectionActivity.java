@@ -25,6 +25,8 @@ public class DirectionActivity extends Activity implements SensorEventListener {
     private Sensor mAccSeneor;
     private Sensor mMagSensor;
 
+    private String mDirection;
+
     //加速度传感器数据
     private float[] mAccValue = new float[3];
     //地磁传感器数据
@@ -93,19 +95,56 @@ public class DirectionActivity extends Activity implements SensorEventListener {
             }
         }
         mTvAngle.setText(buff.toString());
-        mTvDirection.setText(calculateDirection(mValues));
+        mDirection = calculateDirection(mValues);
+        mTvDirection.setText(mDirection);
     }
 
     private String calculateDirection(float[] values) {
-        if (values[0] > 180.0 || values[0] < -180.0 || values[1] > 90.0 || values[1] < -90.0 || values[2] > 180.0 || values[2] < -180.0) {
+        if (Math.abs(values[0]) > 180.0 || Math.abs(values[1]) > 90.0 || Math.abs(values[2]) > 180.0) {
             return "方向传感器数据数据超限";
         }
-//        if (-5.0 < values[2] && values[2] < 5.0) {
-//            return "摄像头朝下，无法判断角度";
-//        }
-//        if (-175.0 > values[2] || values[2] > 175.0) {
-//            return "摄像头朝上，无法判断角度";
-//        }
+        if (Math.abs(values[1]) < 5.0 && Math.abs(values[2]) < 5.0) {
+            return "摄像头朝下，无法判断角度";
+        }
+        if (Math.abs(values[1]) < 5.0 && Math.abs(Math.abs(values[2]) - 180) < 5.0) {
+            return "摄像头朝上，无法判断角度";
+        }
+
+        //设备竖屏垂直，沿用内存保留的方向
+        if (Math.abs(Math.abs(values[1]) - 90.0) <= 5.0) {
+            if (mDirection == null) {
+                return "请调整设备";
+            }
+            return mDirection;
+        }
+        //通过俯仰角判断竖屏
+        if (Math.abs(Math.abs(values[1]) - 90.0) <= 30.0) {
+            //设备插孔朝上
+            if (values[1] < 0) {
+                //设备前倾
+                if (Math.abs(values[2]) <= 90) {
+                    if (values[0] >= 0.0) {
+                        return analyzeValue(values[0]);
+                    } else {
+                        return analyzeValue(values[0] + 360.0);
+                    }
+                } else {//设备后倾
+                    return analyzeValue(values[0] + 180.0);
+                }
+            } else {//设备插孔朝下
+                //设备前倾
+                if (Math.abs(values[2]) <= 90) {
+                    return analyzeValue(values[0] + 180.0);
+                } else {//设备后倾
+                    if (values[0] >= 0.0) {
+                        return analyzeValue(values[0]);
+                    } else {
+                        return analyzeValue(values[0] + 360.0);
+                    }
+                }
+            }
+        }
+        //横屏，
         if (values[2] < 0) {
             if (values[0] >= -90.0) {
                 return analyzeValue(values[0] + 90.0);
