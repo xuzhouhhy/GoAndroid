@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/toast_linearlayout">
+
+    <com.xuzhouhhy.imagetoast.LoadingView
+        android:id="@+id/loading"
+        style="@style/toast_icon" />
+
+    <TextView
+        style="@style/toast_text"
+        android:text="加载中" />
+
+</LinearLayout>

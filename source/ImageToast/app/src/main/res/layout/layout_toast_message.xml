@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/toast_linearlayout"
+    android:layout_height="34dp">
+
+    <TextView
+        android:id="@+id/toast_text"
+        style="@style/toast_text"
+        android:layout_margin="8dp"
+        android:text="操作已完成" />
+
+</LinearLayout>

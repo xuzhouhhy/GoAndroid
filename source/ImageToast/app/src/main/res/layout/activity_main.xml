@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/success"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:onClick="onSuccess"
+                android:text="成功!" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:onClick="onLoading"
+                android:text="加载中!" />
+
+            <Button
+                android:id="@+id/fail"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:onClick="onFail"
+                android:text="失败!" />
+
+            <Button
+                android:id="@+id/loading2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:onClick="onWarning"
+                android:text="警告提示" />
+
+            <Button
+                android:id="@+id/finish"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:onClick="onFinish"
+                android:text="操作已完成" />
+        </LinearLayout>
+
+        <include layout="@layout/layout_toast_loading" />
+        <include layout="@layout/layout_toast_success" />
+        <include layout="@layout/layout_toast_fail" />
+        <include layout="@layout/layout_toast_warning" />
+        <include layout="@layout/layout_toast_message" />
+
+
+    </LinearLayout>
+
+
+</ScrollView>

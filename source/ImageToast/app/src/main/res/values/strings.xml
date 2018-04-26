@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ImageToast</string>
+    <!--V2.0新增Icon-->
+    <string name="icon_toast_fail">&#xe63b;</string>
+    <string name="icon_toast_success">&#xe639;</string>
+    <string name="icon_toast_warning">&#xe63a;</string>
+    <string name="icon_toast_finish">&#xe630;</string>
+    <string name="icon_toast_">&#xe6d7;</string>
+</resources>
