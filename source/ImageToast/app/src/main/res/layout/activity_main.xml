@@ -56,11 +56,11 @@
                 android:text="操作已完成" />
         </LinearLayout>
 
-        <include layout="@layout/layout_toast_loading" />
-        <include layout="@layout/layout_toast_success" />
-        <include layout="@layout/layout_toast_fail" />
-        <include layout="@layout/layout_toast_warning" />
-        <include layout="@layout/layout_toast_message" />
+        <include layout="@layout/toast_loading_layout" />
+        <include layout="@layout/toast_success_layout" />
+        <include layout="@layout/toast_fail_layout" />
+        <include layout="@layout/toast_warning_layout" />
+        <include layout="@layout/toast_message_layout" />
 
 
     </LinearLayout>

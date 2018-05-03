@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/toast_linearlayout">
 
-    <com.xuzhouhhy.imagetoast.LoadingView
-        android:id="@+id/loading"
-        style="@style/toast_icon" />
+    <com.xuzhouhhy.imagetoast.IconTextView
+        style="@style/toast_icon"
+        android:text="@string/icon_toast_success" />
 
     <TextView
+        android:id="@+id/toast_text"
         style="@style/toast_text"
-        android:text="加载中" />
+        android:text="成功提示" />
 
 </LinearLayout>

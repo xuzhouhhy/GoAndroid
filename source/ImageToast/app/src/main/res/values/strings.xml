@@ -6,4 +6,8 @@
     <string name="icon_toast_warning">&#xe63a;</string>
     <string name="icon_toast_finish">&#xe630;</string>
     <string name="icon_toast_">&#xe6d7;</string>
+    <string name="test_success">成功测试成功测试成功测试成功测试成功测试成功测试成功测试成功测试成功测试</string>
+    <string name="test_fail">测试失败</string>
+    <string name="test_warn">警告测试</string>
+    <string name="message_test">测试信息测试信息测试信息测试信息测试信息测试信息</string>
 </resources>
