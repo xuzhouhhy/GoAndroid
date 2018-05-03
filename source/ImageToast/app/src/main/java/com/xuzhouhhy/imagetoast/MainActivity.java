@@ -20,21 +20,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onSuccess(View view) {
-        ToastUtil.showSuccess(this, R.string.test_success);
+        ToastUtil.showWithSuccessIcon(this, R.string.test_success);
     }
 
     public void onLoading(View view) {
-        ToastUtil.showLoading(this);
+        ToastUtil.showWithLoadingIcon(this);
     }
 
     public void onFail(View view) {
-        ToastUtil.showFail(this, R.string.test_fail);
+        ToastUtil.showWithFailIcon(this, R.string.test_fail);
 
     }
 
     public void onWarning(View view) {
 
-        ToastUtil.showWarning(this, R.string.test_warn);
+        ToastUtil.showWithWarningIcon(this, R.string.test_warn);
 
     }
 
