@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 public class ToastUtil {
 
-    public static void showSuccess(Context context, int stringId) {
+    public static void showWithSuccessIcon(Context context, int stringId) {
         Toast toast = new Toast(context);
         View view = LayoutInflater.from(context).inflate(R.layout.toast_success_layout, null);
         ((TextView) view.findViewById(R.id.toast_text)).setText(stringId);
@@ -19,7 +19,7 @@ public class ToastUtil {
         toast.show();
     }
 
-    public static void showLoading(Context context) {
+    public static void showWithLoadingIcon(Context context) {
         Toast toast = new Toast(context);
         View view = LayoutInflater.from(context).inflate(R.layout.toast_loading_layout, null);
         toast.setView(view);
@@ -28,7 +28,7 @@ public class ToastUtil {
         toast.show();
     }
 
-    public static void showWarning(Context context, int stringId) {
+    public static void showWithWarningIcon(Context context, int stringId) {
         Toast toast = new Toast(context);
         View view = LayoutInflater.from(context).inflate(R.layout.toast_warning_layout, null);
         ((TextView) view.findViewById(R.id.toast_text)).setText(stringId);
@@ -48,7 +48,7 @@ public class ToastUtil {
         toast.show();
     }
 
-    public static void showFail(Context context, int stringId) {
+    public static void showWithFailIcon(Context context, int stringId) {
         Toast toast = new Toast(context);
         View view = LayoutInflater.from(context).inflate(R.layout.toast_fail_layout, null);
         ((TextView) view.findViewById(R.id.toast_text)).setText(stringId);
